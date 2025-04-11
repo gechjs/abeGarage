@@ -1,6 +1,8 @@
 const express = require('express');
 require('dotenv').config();
+
 const sanitize = require('sanitize');
+
 const cors = require('cors');
 const corsOptions = {
   origin: process.env.FRONTEND_URL,
