@@ -1,8 +1,17 @@
 import React from 'react';
 // Import the logo image 
 import logo from '../../../assets/images/logo.png';
+// Import the auth hook 
+import { useAuth } from "../../../Contexts/AuthContext";
+
 
 function Header(props) {
+  // Use the auth hook to get the current context 
+  // Checks if the user is logged in and if the user is an admin 
+  console.log(useAuth()); // Check if context is working 
+  const { isLogged, setIsLogged, employee } = useAuth();
+
+
   return (
     <div>
       <header class="main-header header-style-one">
