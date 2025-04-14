@@ -1,16 +1,14 @@
+// Import React and the Hooks we need here 
 import React, { useState, useEffect, useContext } from "react";
-// import auth header 
-import employeeAuthHeader from "../util/auth.header";
-
-// Create the AuthContext 
+// Import the Util function we created to handle the reading from the local storage 
+import getAuth from '../util/auth';
+// Create a context object  
 const AuthContext = React.createContext();
-
-// Export the AuthContext
+// Create a custom hook to use the context
 export const useAuth = () => {
   return useContext(AuthContext);
 }
-
-// Create the AuthProvider 
+// Create a provider component  
 export const AuthProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -20,7 +18,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Retrieve the logged in user from local storage
-    const loggedInEmployee = employeeAuthHeader();
+    const loggedInEmployee = getAuth();
     // console.log(loggedInEmployee);
     loggedInEmployee.then((response) => {
       // console.log(response);
@@ -34,10 +32,10 @@ export const AuthProvider = ({ children }) => {
       }
     });
   }, []);
-
   return (
     <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
+
