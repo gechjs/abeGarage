@@ -5,7 +5,11 @@ import backgroundImage from "../../assets/images/custom/banner/banner1.jpg";
 import vban1 from "../../assets/images/custom/misc/vban1.jpg";
 //import image vban2
 import vban2 from "../../assets/images/custom/misc/vban2.jpg";
-import image4 from "../../assets/images/resource/image-4.jpg"
+import image4 from "../../assets/images/custom/additional-B9nihJ5u.jpg"
+import bg1 from "../../assets/images/background/bg2.png";
+//import image servericeImage
+import serviceImage from "../../assets/images/custom/chris-liverani-HUJDz6CJEaM-unsplash.jpg";
+    
 function Home() {
   return (
     <div>
@@ -90,43 +94,65 @@ function Home() {
         </section>
 
         
-        <section className="services-section">
-          <div className="auto-container">
-            <div className="sec-title style-two">
-              <h2>Our Featured Services</h2>
-              <div className="text">
-                Bring to the table win-win survival strategies to ensure proactive domination. At
-                the end of the day, going forward, a new normal that has evolved from generation X is on the
-                runway heading towards a streamlined cloud solution.
-              </div>
+        <section class="services-section">
+            <div class="auto-container">
+                <div class="sec-title style-two">
+                    <h2>Our Featured Services</h2>
+                    <div class="text">Bring to the table win-win survival strategies to ensure proactive domination. At
+                        the end of the day, going forward, a new normal that has evolved from generation X is on the
+                        runway heading towards a streamlined cloud solution. </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 service-block-one">
+                        <div class="inner-box hvr-float-shadow">
+                            <h5>Service and Repairs</h5>
+                            <h2>Performance Upgrade</h2>
+                            <a href="#" class="read-more">read more +</a>
+                            <div class="icon"><span class="flaticon-power"></span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 service-block-one">
+                        <div class="inner-box hvr-float-shadow">
+                            <h5>Service and Repairs</h5>
+                            <h2>Transmission Services</h2>
+                            <a href="#" class="read-more">read more +</a>
+                            <div class="icon"><span class="flaticon-gearbox"></span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 service-block-one">
+                        <div class="inner-box hvr-float-shadow">
+                            <h5>Service and Repairs</h5>
+                            <h2>Break Repair & Service</h2>
+                            <a href="#" class="read-more">read more +</a>
+                            <div class="icon"><span class="flaticon-brake-disc"></span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 service-block-one">
+                        <div class="inner-box hvr-float-shadow">
+                            <h5>Service and Repairs</h5>
+                            <h2>Engine Service & Repair</h2>
+                            <a href="#" class="read-more">read more +</a>
+                            <div class="icon"><span class="flaticon-car-engine"></span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 service-block-one">
+                        <div class="inner-box hvr-float-shadow">
+                            <h5>Service and Repairs</h5>
+                            <h2>Tyre & Wheels</h2>
+                            <a href="#" class="read-more">read more +</a>
+                            <div class="icon"><span class="flaticon-tire"></span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 service-block-one">
+                        <div class="inner-box hvr-float-shadow">
+                            <h5>Service and Repairs</h5>
+                            <h2>Denting & Painting</h2>
+                            <a href="#" class="read-more">read more +</a>
+                            <div class="icon"><span class="flaticon-spray-gun"></span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="row">
-              <div className="col-lg-4 service-block-one">
-                <div className="inner-box hvr-float-shadow">
-                  <h5>Service and Repairs</h5>
-                  <h2>Performance Upgrade</h2>
-                  <a href="#" className="read-more">read more +</a>
-                  <div className="icon"><span className="flaticon-power"></span></div>
-                </div>
-              </div>
-              <div className="col-lg-4 service-block-one">
-                <div className="inner-box hvr-float-shadow">
-                  <h5>Oil Change</h5>
-                  <h2>Engine Maintenance</h2>
-                  <a href="#" className="read-more">read more +</a>
-                  <div className="icon"><span className="flaticon-oil"></span></div>
-                </div>
-              </div>
-              <div className="col-lg-4 service-block-one">
-                <div className="inner-box hvr-float-shadow">
-                  <h5>Brake Service</h5>
-                  <h2>Safety Check</h2>
-                  <a href="#" className="read-more">read more +</a>
-                  <div className="icon"><span className="flaticon-brake"></span></div>
-                </div>
-              </div>
-            </div>
-          </div>
         </section>
 
        
@@ -146,56 +172,87 @@ function Home() {
               </div>
               <div className="col-lg-6">
                 <div className="image">
-                  <img src="assets/images/resource/image-3.jpg" alt="" />
+                 
+                  <img src={serviceImage} alt="" />
+                
+              
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <section className="why-choose-us">
-          <div className="auto-container">
-            <div className="row">
-              <div className="col-lg-6">
-                <div className="sec-title style-two">
-                  <h2>Why Choose Us</h2>
-                  <div className="text">
-                    Bring to the table win-win survival strategies to ensure proactive
-                    domination. At the end of the day, going forward, a new normal that has evolved from
-                    generation heading towards.
-                  </div>
-                </div>
-                <div className="icon-box">
-                  <div className="icon"><span className="flaticon-mechanic"></span></div>
-                  <h4>Certified Expert Mechanics</h4>
-                </div>
-                <div className="icon-box">
-                  <div className="icon"><span className="flaticon-car"></span></div>
-                  <h4>Fast and Reliable Service</h4>
-                </div>
-              </div>
-              <div className="col-lg-6">
-                <div className="sec-title style-two">
-                  <h2>Additional Services</h2>
-                </div>
-                <div className="row">
-                  <div className="col-md-5">
-                    <div className="image">
-                      <img src={image4} alt="" />
+        <section class="why-choose-us">
+            <div class="auto-container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="sec-title style-two">
+                            <h2>Why Choose Us</h2>
+                            <div class="text">Bring to the table win-win survival strategies to ensure proactive
+                                domination. At the end of the day, going forward, a new normal that has evolved from
+                                generation heading towards.</div>
+                        </div>
+                        <div class="icon-box">
+                            <div class="icon"><span class="flaticon-mechanic"></span></div>
+                            <h4>Certified Expert Mechanics</h4>
+                        </div>
+                        <div class="icon-box">
+                            <div class="icon"><span class="flaticon-wrench"></span></div>
+                            <h4>Fast And Quality Service</h4>
+                        </div>
+                        <div class="icon-box">
+                            <div class="icon"><span class="flaticon-price-tag-1"></span></div>
+                            <h4>Best Prices in Town</h4>
+                        </div>
+                        <div class="icon-box">
+                            <div class="icon"><span class="flaticon-trophy"></span></div>
+                            <h4>Awarded Workshop</h4>
+                        </div>
                     </div>
-                  </div>
-                  <div className="col-md-7">
-                    <ul className="list">
-                      <li>General Auto Repair & Maintenance</li>
-                      <li>Transmission Repair & Replacement</li>
-                      <li>Brake Repair and Replacement</li>
-                      <li>Air Conditioning A/C Repair</li>
-                      <li>Wheel Alignment</li>
-                    </ul>
-                  </div>
+                    <div class="col-lg-6">
+                        <div class="sec-title style-two">
+                            <h2>Addtional Services</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="image"><img src={image4} alt=""/></div>
+                            </div>
+                            <div class="col-md-7">
+                                <ul class="list">
+                                    <li>General Auto Repair & Maintenance</li>
+                                    <li>Transmission Repair & Replacement</li>
+                                    <li>Tire Repair and Replacement</li>
+                                    <li>State Emissions Inspection</li>
+                                    <li>Break Job / Break Services</li>
+                                    <li>Electrical Diagnostics</li>
+                                    <li>Fuel System Repairs</li>
+                                    <li>Starting and Charging Repair</li>
+                                    <li>Steering and Suspension Work</li>
+                                    <li>Emission Repair Facility</li>
+                                    <li>Wheel Alignment</li>
+                                    <li>Computer Diagaonstic Testing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </section>
+        <section class="video-section">
+         
+        <div 
+  className="sec-bg"
+  style={{ backgroundImage: `url(${bg1})` }}
+></div>
+            <div class="auto-container">
+                <h5>Working since 1992</h5>
+                <h2>We are leader <br/> in Car Mechanical Work</h2>
+                <div class="video-box">
+                    <div class="video-btn"><a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s"
+                            class="overlay-link lightbox-image video-fancybox ripple"><i class="flaticon-play"></i></a>
+                    </div>
+                    <div class="text">Watch intro video <br/> about us</div>
+                </div>
+            </div>
         </section>
 
         <section className="cta-section">
