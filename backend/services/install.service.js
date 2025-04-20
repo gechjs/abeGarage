@@ -23,10 +23,8 @@ async function install() {
       }
       templine += line;
       if (line.trim().endsWith(';')) {
-        // If it has a semicolon at the end, it's the end of the query
-        // Prepare the individual query 
+      
         const sqlQuery = templine.trim();
-        // Add query to the list of queries 
         queries.push(sqlQuery);
         templine = '';
       }
@@ -50,8 +48,7 @@ async function install() {
   } else {
     finalMessage.status = 500;
   }
-  // Return the final message
   return finalMessage;
 }
-// Export the install function for use in the controller
+
 module.exports = { install };
