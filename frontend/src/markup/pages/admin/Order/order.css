@@ -1,0 +1,32 @@
+.order-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .order-input:focus {
+    border-color: rgb(145, 82, 82);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+  
+  .add-customer-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-customer-btn:hover {
+    background-color: rgb(153, 95, 95);
+  }
+  
+  
