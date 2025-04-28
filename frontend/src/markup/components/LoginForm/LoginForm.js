@@ -53,7 +53,7 @@ function LoginForm() {
       .then((response) => {
         console.log(response);
         if (response.status === 'success') {
-          // Save the user in the local storage
+          
           if (response.data.employee_token) {
             console.log(response.data);
             localStorage.setItem("employee", JSON.stringify(response.data));

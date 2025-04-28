@@ -28,18 +28,16 @@ function AddEmployeeForm(props) {
   }
 
   const handleSubmit = (e) => {
-    // Prevent the default behavior of the form
-    e.preventDefault();
-    // Handle client side validations  
+    e.preventDefault(); 
     let valid = true; // Flag 
-    // First name is required 
+
     if (!employee_first_name) {
       setFirstNameRequired('First name is required');
       valid = false;
     } else {
       setFirstNameRequired('');
     }
-    // Email is required
+    
     if (!employee_email) {
       setEmailError('Email is required');
       valid = false;
@@ -54,14 +52,12 @@ function AddEmployeeForm(props) {
         setEmailError('');
       }
     }
-    // Password has to be at least 6 characters long
     if (!employee_password || employee_password.length < 6) {
       setPasswordError('Password must be at least 6 characters long');
       valid = false;
     } else {
       setPasswordError('');
     }
-    // If the form is not valid, do not submit 
     if (!valid) {
       return;
     }
