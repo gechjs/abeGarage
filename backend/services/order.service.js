@@ -1,62 +1,114 @@
 const connection = require("../config/db.config");
 const { v4: uuidv4 } = require('uuid');
 
-const createOrder = async ({ customer_id, price, vehicle_id, service_ids, notes, estimated_completion_date }) => {
- 
+const createOrder = async (orderData) => {
+  let conn;
   try {
+    conn = await connection.getConnection();
+    await conn.beginTransaction();
+
+    const {
+      employee_id,
+      customer_id,
+      vehicle_id,
+      order_description,
+      estimated_completion_date,
+      price,
+      service_ids
+    } = orderData;
+{ employee_id,
+  customer_id,
+  vehicle_id,
+  order_description,
+  estimated_completion_date,
+  price,
+  service_ids}
    
-    console.log("order service called")
-    const [employee] = await connection.query('SELECT employee_id FROM employee WHERE employee_email = ?', ['gizachew980@gmail.com']); 
-    console.log(employee)
-    const employeeId = employee.employee_id;
-    const orderHash = uuidv4(); 
+    const orderHash = uuidv4();
+
+
+    const [orderResult] = await conn.query(
+      `INSERT INTO orders (
+        employee_id, 
+        customer_id, 
+        vehicle_id, 
+        order_date, 
+        active_order, 
+        order_hash
+      ) VALUES (?, ?, ?, NOW(), 1, ?)`,
+      [employee_id, customer_id, vehicle_id, orderHash]
+    );
+
+    const orderId = orderResult.insertId;
+
    
-    const customerId = customer_id
-    const vehicleId = vehicle_id
-    const serviceIds = service_ids
-    const estimatedCompletionDate = estimated_completion_date
-
-    console.log("quer for orders called")
-    const response = await connection.query(
-      `INSERT INTO orders (employee_id, customer_id, vehicle_id, active_order, order_hash)
-       VALUES (?, ?, ?, ?, ?)`,
-      [employeeId, customerId, vehicleId, 1, orderHash]
+    await conn.query(
+      `INSERT INTO order_info (
+        order_id,
+        order_total_price,
+        estimated_completion_date,
+        completion_date,
+        additional_request,
+        notes_for_internal_use,
+        notes_for_customer,
+        additional_requests_completed
+      ) VALUES (?, ?, ?, NULL, ?, ?, NULL, 0)`,
+      [
+        orderId,
+        price,
+        estimated_completion_date,
+        order_description || 'No additional request',
+        order_description || 'No internal notes'
+      ]
     );
-    console.log("response", response)
-    const orderId = response.orderResult.insertId;
 
-    // 2. Insert into `order_info`
-    await connection.query(
-      `INSERT INTO order_info (order_id, order_total_price, estimated_completion_date, completion_date, additional_request, notes_for_customer, notes_for_internal_use, additional_requests_completed)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [orderId, price, estimatedCompletionDate,estimatedCompletionDate, 'no request', notes, 'be fast', 0]
-    );
+    const servicesArray = Array.isArray(service_ids) 
+      ? service_ids 
+      : JSON.parse(service_ids || '[]');
 
-    // 3. Insert into `order_services`
-    for (const serviceId of JSON.parse(serviceIds)) {
-      await connection.query(
-        `INSERT INTO order_services (order_id, service_id, service_completed)
-         VALUES (?, ?, ?)`,
-        [orderId, serviceId, 0]
+    for (const serviceId of servicesArray) {
+      await conn.query(
+        `INSERT INTO order_services (
+          order_id,
+          service_id,
+          service_completed
+        ) VALUES (?, ?, 0)`,
+        [orderId, serviceId]
       );
     }
 
-   
-    await connection.query(
-      `INSERT INTO order_status (order_id, order_status)
-       VALUES (?, ?)`,
-      [orderId, 0]
+  
+    await conn.query(
+      `INSERT INTO order_status (
+        order_id,
+        order_status
+      ) VALUES (?, 0)`,
+      [orderId]
     );
 
-    await connection.commit();
-    return { orderId, orderHash };
+    await conn.commit();
 
-  } catch (err) {
-    console.log("error")
+    return { 
+      success: true,
+      order_id: orderId,
+      order_hash: orderHash,
+      employee_id,
+      customer_id,
+      vehicle_id,
+      price,
+      estimated_completion_date,
+      services: servicesArray
+    };
+
+  } catch (error) {
+    if (conn) await conn.rollback();
+    console.error('Error in orderService.createOrder:', error);
+    throw error; 
+  } finally {
+    if (conn) conn.release(); 
   }
 };
 
 module.exports = {
-    createOrder
-  };
-  
+  createOrder
+};
