@@ -26,6 +26,8 @@ import AdminDashboard from './markup/pages/admin/AdminDashboard';
 import SingleCustomer from './markup/pages/admin/SingleCustomer';
 import Service from './markup/pages/admin/Service';
 import Order from './markup/pages/admin/Order/Order';
+import EditCustomer from './markup/pages/admin/EditCustomer';
+import EditEmployee from './markup/pages/admin/EditEmployee';
 function App() {
   return (
     <>
@@ -58,9 +60,12 @@ function App() {
               <SingleCustomer />
             </PrivateAuthRoute>
           } />
+          <Route path="/admin/customer/edit/:id" element={<EditCustomer />} />
+
           <Route path="/admin/add-customer" element={<AddCustomer/>} />
-        
+          
         <Route path="/admin/employees" element={<Employees />} />
+        <Route path="/admin/employee/edit/:id" element = {<EditEmployee />}></Route>
         <Route path='/admin/order' element = {<Order />}/>
         <Route path="/admin/add-employee"
           element={

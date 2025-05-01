@@ -25,6 +25,8 @@ const getAllCustomers = async (token) => {
   };
 
   const response = await fetch(`${api_url}/api/customers`, requestOptions);
+ 
+  
   return response;
 };
 
@@ -79,30 +81,53 @@ const getCustomerVehicles = async (customerId, token) => {
 };
 
 const createOrder = async (orderData, token) => {
+ 
   const requestOptions = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'x-access-token': token,
     },
+    
     body: JSON.stringify({
       employee_id: orderData.employee_id,
       customer_id: orderData.customer_id,
       vehicle_id: orderData.vehicle_id,
-      order_description: orderData.notes,
+      order_description: orderData.order_description,
       estimated_completion_date: orderData.estimated_completion_date,
+      completion_date: orderData.completion_date || null,
+      order_completed: orderData.order_completed || false,
+      service_ids: orderData.order_services,
       price: orderData.price,
-      order_services: orderData.service_ids.map(serviceId => ({
-        service_id: serviceId,
-      })),
     }),
   };
-  
+  console.log(requestOptions)
 
-  console.log('Sending request to create order:', requestOptions);
   const response = await fetch(`${api_url}/api/order`, requestOptions);
   return response;
 };
+const updateCustomer = async (customerId, formData, token) => {
+  const requestOptions = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-access-token': token,
+    },
+    body: JSON.stringify(formData),
+  };
+
+  console.log('Sending request to update customer:', requestOptions);
+  console.log("customerId", customerId)
+  const response = await fetch(`${api_url}/api/customer/${customerId}`, requestOptions);
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || 'Failed to update customer');
+  }
+
+  return response; 
+};
+
 
 const getAllServices = async (token) => {
   const requestOptions = {
@@ -118,6 +143,7 @@ const getAllServices = async (token) => {
 };
 
 const customerService = {
+  updateCustomer,
   createCustomer,
   getAllCustomers,
   getCustomerById,

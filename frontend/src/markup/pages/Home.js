@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import the Link component for navigation
 //import the background image
 import backgroundImage from "../../assets/images/custom/banner/banner1.jpg";
 
@@ -10,12 +11,13 @@ import ScheduleAppointment from '../components/sechdule/ScheduleAppointment';
 import Experience from '../components/Experience/Experience';
 import ServiceComponent from '../components/serviceComp/ServiceComponent';
 import VideoSection from '../components/videoSection/VideoSection';
+
 function Home() {
   return (
     <div>
       <div className="page-wrapper">
         {/* <div className="loader-wrap">
-    </section>      <div className="preloader">
+          <div className="preloader">
             <div className="preloader-close">Preloader Close</div>
           </div>
           <div className="layer layer-one"><span className="overlay"></span></div>
@@ -25,12 +27,10 @@ function Home() {
 
         <VideoSection></VideoSection>
 
-      
         <Experience></Experience>
 
         <ServiceComponent></ServiceComponent>
 
-       
         <section className="features-section">
           <div className="auto-container">
             <div className="row">
@@ -47,10 +47,7 @@ function Home() {
               </div>
               <div className="col-lg-6">
                 <div className="image">
-                 
                   <img src={serviceImage} alt="" />
-                
-              
                 </div>
               </div>
             </div>
@@ -61,7 +58,6 @@ function Home() {
 
         <ScheduleAppointment></ScheduleAppointment>
 
-    
       </div>
     </div>
   );

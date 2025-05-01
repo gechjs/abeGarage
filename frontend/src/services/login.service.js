@@ -1,5 +1,6 @@
 const api_url = process.env.REACT_APP_API_URL;
 
+console.log("API URL:", api_url);
 // A function to send the login request to the server 
 const logIn = async (formData) => {
   const requestOptions = {
@@ -19,8 +20,9 @@ const logOut = () => {
 };
 
 
-// Export the functions 
-module.exports = {
+const loginService = {
   logIn,
   logOut
-}
+};
+
+export default loginService;

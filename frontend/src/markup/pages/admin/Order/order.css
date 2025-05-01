@@ -29,4 +29,28 @@
     background-color: rgb(153, 95, 95);
   }
   
-  
+  .create-order-header{
+    color: #fbf7f7 !important;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .form-select{
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .form-label{
+    color: #0c0c0b;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .card-header{
+    background-color: #17a2b8 !important; /* Info color for card header */
+    color: white !important; /* White text color for card header */
+  }

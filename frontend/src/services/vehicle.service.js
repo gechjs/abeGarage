@@ -9,9 +9,8 @@ const addVehicle = async (customerId, vehicleData, token) => {
     },
     body: JSON.stringify(vehicleData),
   };
-  console.log("rqeustio option body",requestOptions.body)
+  console.log("request option body", requestOptions.body);
 
-  
   const response = await fetch(`${api_url}/api/vehicle`, requestOptions);
 
   if (!response.ok) {
@@ -22,8 +21,25 @@ const addVehicle = async (customerId, vehicleData, token) => {
   return response;
 };
 
+
+const getAllVehicles = async (token) => {
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-access-token': token,
+    },
+  };
+
+  const response = await fetch(`${api_url}/api/vehicles`, requestOptions); 
+  
+
+  return response;
+};
+
 const vehicleService = {
   addVehicle,
+  getAllVehicles, 
 };
 
 export default vehicleService;
